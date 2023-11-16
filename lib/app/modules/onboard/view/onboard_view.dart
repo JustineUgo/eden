@@ -1,4 +1,5 @@
 import 'package:eden/app/modules/onboard/controller/onboard_controller.dart';
+import 'package:eden/app/routes/routes.dart';
 import 'package:eden/app/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -80,23 +81,26 @@ class OnboardBottom extends StatelessWidget {
                       }),
                     )),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: Dimensions.unit * 3, horizontal: Dimensions.unit * 6),
-            decoration: BoxDecoration(
-              color: AppTheme.white.withOpacity(.2),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "SIGN UP",
-                  key: const Key('signup'),
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, color: AppTheme.white),
-                ),
-                const SizedBox(width: 5),
-                const Icon(CupertinoIcons.arrow_right, size: 14, color: AppTheme.white),
-              ],
+          GestureDetector(
+            onTap: ()=> Get.toNamed(Paths.auth),
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: Dimensions.unit * 3, horizontal: Dimensions.unit * 6),
+              decoration: BoxDecoration(
+                color: AppTheme.white.withOpacity(.2),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "SIGN UP",
+                    key: const Key('signup'),
+                    style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, color: AppTheme.white),
+                  ),
+                  const SizedBox(width: 5),
+                  const Icon(CupertinoIcons.arrow_right, size: 14, color: AppTheme.white),
+                ],
+              ),
             ),
           )
         ],
