@@ -13,18 +13,18 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      // textTheme: GoogleFonts.montserratTextTheme(),
       scaffoldBackgroundColor: lightGreen,
-        primaryColor: black,
+      primaryColor: black,
+      cardColor: white,
     );
   }
 
   static ThemeData dark() {
     return ThemeData(
-        //mobile app background color
-        scaffoldBackgroundColor: darkMode,
-        primaryColor: white,
-        );
+      scaffoldBackgroundColor: darkMode,
+      primaryColor: white,
+      cardColor: const Color(0xff111111),
+    );
   }
 }
 

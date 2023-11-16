@@ -1,11 +1,12 @@
 import 'package:eden/app/modules/auth/view/auth_view.dart';
+import 'package:eden/app/modules/home/view/home_view.dart';
 import 'package:eden/app/modules/onboard/view/onboard_view.dart';
 import 'package:get/get.dart';
 
 abstract class Paths {
   static String auth = "/";
   static String onboard = "/onboard";
-  static String dashboard = "/home";
+  static String home = "/home";
 }
 
 class AppRoutes {
@@ -18,6 +19,11 @@ class AppRoutes {
     GetPage(
       name: Paths.auth,
       page: () => const AuthScreen(),
+    ),
+
+    GetPage(
+      name: Paths.home,
+      page: () => const HomeScreen(),
     ),
   ];
 }

@@ -1,3 +1,4 @@
+import 'package:eden/app/routes/routes.dart';
 import 'package:eden/app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -82,13 +83,16 @@ class LoginOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        decoration: BoxDecoration(color: AppTheme.green, borderRadius: BorderRadius.circular(10)),
-        child: Icon(
-          iconData,
-          size: 20,
-          color: AppTheme.themeData.primaryColor,
+      child: GestureDetector(
+        onTap: () => Get.offAndToNamed(Paths.home),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          decoration: BoxDecoration(color: AppTheme.green, borderRadius: BorderRadius.circular(10)),
+          child: Icon(
+            iconData,
+            size: 20,
+            color: AppTheme.themeData.primaryColor,
+          ),
         ),
       ),
     );

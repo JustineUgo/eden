@@ -82,7 +82,7 @@ class OnboardBottom extends StatelessWidget {
                     )),
           ),
           GestureDetector(
-            onTap: ()=> Get.toNamed(Paths.auth),
+            onTap: ()=> Get.offAndToNamed(Paths.auth),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: Dimensions.unit * 3, horizontal: Dimensions.unit * 6),
               decoration: BoxDecoration(
