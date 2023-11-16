@@ -19,6 +19,7 @@ class AuthScreen extends GetView {
               Expanded(
                 child: Center(
                   child: Container(
+                    key: const Key('logo'),
                     height: Dimensions.unit * 30,
                     width: Dimensions.unit * 30,
                     decoration:
@@ -52,9 +53,9 @@ class AuthScreen extends GetView {
                     const SizedBox(height: 30),
                     Row(
                       children: [
-                        LoginOption(iconData: FontAwesomeIcons.google),
+                        LoginOption(key: const Key('google'), iconData: FontAwesomeIcons.google),
                         const SizedBox(width: 15),
-                        LoginOption(iconData: FontAwesomeIcons.github),
+                        LoginOption(key: const Key('github'), iconData: FontAwesomeIcons.github),
                       ],
                     ),
                     const SizedBox(height: 50),
