@@ -12,26 +12,8 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      //TODO:
-      textTheme: TextTheme(),
+      // textTheme: TextTheme(button: ),
       scaffoldBackgroundColor: lightGreen,
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          foregroundColor: white,
-          disabledForegroundColor: white,
-          //TODO:
-          // backgroundColor: darkBlue,
-          // disabledBackgroundColor: washoutBlue,
-          // fixedSize: Size(Get.width, Dimensions.unit * 11.5),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          //TODO:
-          // textStyle: CustomStyle.header.copyWith(
-          //   fontSize: Dimensions.unit * 3.5,
-          // ),
-        ),
-      ),
     );
   }
 
