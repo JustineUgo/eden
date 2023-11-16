@@ -14,7 +14,7 @@ class OnboardScreen extends GetView<OnboardController> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
+            Expanded(key: const Key('onboard-screen'), 
               child: GestureDetector(
                 onHorizontalDragUpdate: (details) {
                   // Swiping in right direction.
