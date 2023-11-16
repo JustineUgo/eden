@@ -12,7 +12,7 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      // textTheme: TextTheme(button: ),
+      // textTheme: GoogleFonts.montserratTextTheme(),
       scaffoldBackgroundColor: lightGreen,
     );
   }
