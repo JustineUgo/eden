@@ -35,7 +35,7 @@ class AuthController extends GetxController {
 
   Future<dynamic> signInWithGoogle() async {
     try {
-      await signOut();
+      await FirebaseAuth.instance.signOut();
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
       final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
