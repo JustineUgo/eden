@@ -54,6 +54,7 @@ class AuthScreen extends GetView<AuthController> {
                     ),
                     const SizedBox(height: 30),
                     Row( 
+                      key:const Key('signup-option'),
                           children: [
                             LoginOption(
                                 iconData: FontAwesomeIcons.google,

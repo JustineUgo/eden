@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:github_signin_promax/github_signin_promax.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
@@ -46,8 +47,12 @@ class AuthController extends GetxController {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
       loadAuth(isTest: false);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "account-exists-with-different-credential") ;
+      showMessage(e.message ?? '');
     } on Exception catch (e) {
       e;
+      // showMessage(e.me)
     }
   }
 
@@ -78,6 +83,9 @@ class AuthController extends GetxController {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
       loadAuth(isTest: false);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "account-exists-with-different-credential") ;
+      showMessage(e.message ?? '');
     } on Exception catch (e) {
       e;
     }
@@ -91,6 +99,25 @@ class AuthController extends GetxController {
     } on Exception catch (_) {
       return false;
     }
+  }
+
+  void showMessage(String message) {
+    Get.showSnackbar(
+      GetSnackBar(
+          messageText: const SizedBox.shrink(),
+          titleText: Text(
+            message,
+            style: GoogleFonts.montserrat(
+              color: AppTheme.green,
+              fontSize: Dimensions.unit * 3.5,
+            ),
+          ),
+          borderRadius: 8,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          duration: const Duration(seconds: 3),
+          snackPosition: SnackPosition.TOP),
+    );
   }
 }
 
