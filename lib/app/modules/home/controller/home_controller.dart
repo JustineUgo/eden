@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:ably_flutter/ably_flutter.dart' as ably;
 import 'package:eden/app/data/model/model.dart';
 import 'package:eden/app/data/provider/provider.dart';
+import 'package:eden/app/services/storage_service.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   final EdenProvider provider;
-  HomeController({required this.provider});
+  final StorageService storage;
+  HomeController( {required this.provider, required this.storage,});
 
   StreamSubscription<ably.Message>? subscription;
   ably.RealtimeChannel? channel;

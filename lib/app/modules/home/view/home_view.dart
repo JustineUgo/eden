@@ -21,7 +21,7 @@ class HomeScreen extends GetView<HomeController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Hi, Welcome 👋",
+                    "Welcome 👋",
                     style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
                       color: AppTheme.themeData.primaryColor,
@@ -30,17 +30,35 @@ class HomeScreen extends GetView<HomeController> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        "Og Justine",
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w600,
-                          color: AppTheme.themeData.primaryColor,
-                          fontSize: 15,
+                      const SizedBox(width: 5),
+                      CircleAvatar(
+                        radius: 22,
+                        backgroundImage: NetworkImage(
+                          controller.storage.user.value['photo'],
                         ),
                       ),
-                      const SizedBox(width: 5),
-                      const CircleAvatar(radius: 25),
                     ],
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    controller.storage.user.value['name'],
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w800,
+                      color: AppTheme.themeData.primaryColor,
+                      fontSize: 12,
+                    ),
+                  ),
+                  Text(
+                    controller.storage.user.value['email'],
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w400,
+                      color: AppTheme.themeData.primaryColor,
+                      fontSize: 12,
+                    ),
                   ),
                 ],
               ),
@@ -76,8 +94,8 @@ class HomeScreen extends GetView<HomeController> {
               Expanded(
                 child: Obx(() {
                   return ListView(
-                        children: controller.orders.map((order) => OrderWidget(order: order)).toList(),
-                      );
+                    children: controller.orders.map((order) => OrderWidget(order: order)).toList(),
+                  );
                 }),
               )
             ],

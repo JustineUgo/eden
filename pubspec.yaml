@@ -10,11 +10,15 @@ environment:
 dependencies:
   ably_flutter: ^1.2.23
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.14.0
+  firebase_core: ^2.22.0
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.6.0
   get: ^4.6.6
+  get_storage: ^2.1.1
   google_fonts: ^6.1.0
+  google_sign_in: ^6.1.6
 
 dev_dependencies:
   flutter_lints: ^2.0.0
