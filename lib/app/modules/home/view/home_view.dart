@@ -81,7 +81,7 @@ class HomeScreen extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: controller.products
-                      .map((product) => ProductWidget(key: const Key('product'), controller: controller, id: product.id, image: product.image, name: product.name, price: product.price))
+                      .map((product) => ProductWidget(controller: controller, id: product.id, image: product.image, name: product.name, price: product.price))
                       .toList(),
                 ),
               ),
