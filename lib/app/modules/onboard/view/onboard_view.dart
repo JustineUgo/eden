@@ -130,6 +130,12 @@ class OnboardContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 15),
+          Text(
+            "*Tap down and then swipe to scroll through onboarding",
+            style: GoogleFonts.montserrat(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.white),
+          ),
+          const SizedBox(height: 15),
           Obx(() {
             return Text(
               controller.onboardContent[controller.index.value]!,
