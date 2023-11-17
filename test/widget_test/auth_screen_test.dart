@@ -25,6 +25,7 @@ void main() {
     await tester.pumpWidget(widgetForTesting(child: const AuthScreen(isTest: true)));
 
     expect(find.text("Log in"), findsOneWidget);
+    await Future.delayed(const Duration(seconds: 3));
     expect(find.byKey(const Key('signup-option')), findsOneWidget);
     expect(find.byKey(const Key('logo')), findsOneWidget);
   });
