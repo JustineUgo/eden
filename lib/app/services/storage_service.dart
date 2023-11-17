@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -6,8 +8,8 @@ import 'package:get_storage/get_storage.dart';
 class StorageService extends GetxService {
   final GetStorage storage;
 
-  // ignore: non_constant_identifier_names
   String user_profile_key = "user_profile_key";
+  String onbaord_key = "onbaord_key";
 
   StorageService({required this.storage});
 

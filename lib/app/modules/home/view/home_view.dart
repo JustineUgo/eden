@@ -93,9 +93,24 @@ class HomeScreen extends GetView<HomeController> {
               const SizedBox(height: 20),
               Expanded(
                 child: Obx(() {
-                  return ListView(
-                    children: controller.orders.map((order) => OrderWidget(order: order)).toList(),
-                  );
+                  if (controller.orders.isEmpty) {
+                    return Center(
+                      child: Text(
+                        "You currently don't have any order!\nOrder now to view your orders!",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w400,
+                          color: AppTheme.themeData.primaryColor,
+                          fontSize: 12,
+                        ),
+                      ),
+                    );
+                  }
+                  return Obx(() {
+                    return ListView(
+                      children: controller.orders.map((order) => OrderWidget(order: order)).toList(),
+                    );
+                  });
                 }),
               )
             ],

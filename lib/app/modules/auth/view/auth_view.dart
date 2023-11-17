@@ -54,9 +54,9 @@ class AuthScreen extends GetView {
                     const SizedBox(height: 30),
                     Row(
                       children: [
-                        LoginOption(key: const Key('google'), iconData: FontAwesomeIcons.google),
+                        LoginOption(key: const Key('google', ), iconData: FontAwesomeIcons.google, authType: AuthType.google),
                         const SizedBox(width: 15),
-                        LoginOption(key: const Key('github'), iconData: FontAwesomeIcons.github),
+                        LoginOption(key: const Key('github'), iconData: FontAwesomeIcons.github, authType: AuthType.github),
                       ],
                     ),
                     const SizedBox(height: 50),
@@ -77,14 +77,15 @@ class AuthScreen extends GetView {
 
 // ignore: must_be_immutable
 class LoginOption extends StatelessWidget {
-  LoginOption({super.key, required this.iconData});
+  LoginOption({super.key, required this.iconData, required this.authType});
   IconData iconData;
+  final AuthType authType;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: Get.find<AuthController>().signInWithGoogle,
+        onTap:()=> authType == AuthType.google? Get.find<AuthController>().signInWithGoogle(): Get.find<AuthController>().signInWithGithub(context),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15),
           decoration: BoxDecoration(color: AppTheme.green, borderRadius: BorderRadius.circular(10)),

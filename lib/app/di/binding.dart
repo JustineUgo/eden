@@ -16,7 +16,7 @@ class AppBinding extends Bindings {
     Get.put(StorageService(storage: Get.find<GetStorage>()));
 
     Get.put(OnboardController());
-    Get.put(AuthController(storage: Get.find<StorageService>()));
+    Get.put(AuthController(storage: Get.find<StorageService>(), provider: Get.find<EdenProvider>()));
     Get.put(HomeController(provider: Get.find<EdenProvider>(), storage: Get.find<StorageService>()));
   }
 }
