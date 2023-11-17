@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:eden/app/modules/auth/controller/auth_controller.dart';
 import 'package:eden/app/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -53,16 +55,14 @@ class AuthScreen extends GetView<AuthController> {
                       ],
                     ),
                     const SizedBox(height: 30),
-                    Row( 
-                      key:const Key('signup-option'),
-                          children: [
-                            LoginOption(
-                                iconData: FontAwesomeIcons.google,
-                                authType: AuthType.google),
-                            const SizedBox(width: 15),
-                            LoginOption(iconData: FontAwesomeIcons.github, authType: AuthType.github),
-                          ],
-                        ),
+                    Row(
+                      key: const Key('signup-option'),
+                      children: [
+                        if (Platform.isIOS) LoginOption(iconData: FontAwesomeIcons.google, authType: AuthType.google),
+                        if (Platform.isIOS) const SizedBox(width: 15),
+                        LoginOption(iconData: FontAwesomeIcons.github, authType: AuthType.github),
+                      ],
+                    ),
                     const SizedBox(height: 50),
                     Text(
                       'Login and start experiencing ease, like never before..',
