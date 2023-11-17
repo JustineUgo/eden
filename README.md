@@ -5,7 +5,18 @@
 
 Simple challenge submission
 
-<em>PS: Screenshots of design, coming soon.</em>
+<em>Screenshots:</em>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/1.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/2.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/3.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/4.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/5.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/6.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/7.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/8.png" width="140" height="280">
+    <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/9.png" width="140" height="280">
 
 ## Standards
 
