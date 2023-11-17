@@ -5,11 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AuthScreen extends GetView {
-  const AuthScreen({super.key});
-
+class AuthScreen extends GetView<AuthController> {
+  const AuthScreen({super.key, required this.isTest});
+  final bool isTest;
   @override
   Widget build(BuildContext context) {
+    controller.loadAuth(isTest: isTest);
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -46,18 +47,23 @@ class AuthScreen extends GetView {
                     Row(
                       children: [
                         Text(
-                          'Sign up with one of the following',
+                          'Please signup to continue using the app',
                           style: GoogleFonts.montserrat(color: AppTheme.themeData.primaryColor, fontSize: 12),
                         ),
                       ],
                     ),
                     const SizedBox(height: 30),
-                    Row(
-                      children: [
-                        LoginOption(key: const Key('google', ), iconData: FontAwesomeIcons.google, authType: AuthType.google),
-                        const SizedBox(width: 15),
-                        LoginOption(key: const Key('github'), iconData: FontAwesomeIcons.github, authType: AuthType.github),
-                      ],
+                    Obx(() {
+                        return controller.isLoading.value? const Center(child: CircularProgressIndicator(color: AppTheme.green)): Row( key: const Key('signup-option'), 
+                          children: [
+                            LoginOption(
+                                iconData: FontAwesomeIcons.google,
+                                authType: AuthType.google),
+                            const SizedBox(width: 15),
+                            LoginOption(iconData: FontAwesomeIcons.github, authType: AuthType.github),
+                          ],
+                        );
+                      }
                     ),
                     const SizedBox(height: 50),
                     Text(
@@ -85,7 +91,7 @@ class LoginOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap:()=> authType == AuthType.google? Get.find<AuthController>().signInWithGoogle(): Get.find<AuthController>().signInWithGithub(context),
+        onTap: () => authType == AuthType.google ? Get.find<AuthController>().signInWithGoogle() : Get.find<AuthController>().signInWithGithub(context),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15),
           decoration: BoxDecoration(color: AppTheme.green, borderRadius: BorderRadius.circular(10)),

@@ -1,4 +1,5 @@
 import 'package:eden/app/data/model/model.dart';
+import 'package:eden/app/modules/auth/controller/auth_controller.dart';
 import 'package:eden/app/modules/home/controller/home_controller.dart';
 import 'package:eden/app/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: AppTheme.green, onPressed:()=> Get.find<AuthController>().signOut(), child: const Icon(Icons.logout_rounded)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -42,6 +45,7 @@ class HomeScreen extends GetView<HomeController> {
                 ],
               ),
               Column(
+                key: const Key(('user')),
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -77,7 +81,7 @@ class HomeScreen extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: controller.products
-                      .map((product) => ProductWidget(controller: controller, id: product.id, image: product.image, name: product.name, price: product.price))
+                      .map((product) => ProductWidget(key: const Key('product'), controller: controller, id: product.id, image: product.image, name: product.name, price: product.price))
                       .toList(),
                 ),
               ),

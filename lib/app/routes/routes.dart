@@ -18,7 +18,7 @@ class AppRoutes {
     
     GetPage(
       name: Paths.auth,
-      page: () => const AuthScreen(),
+      page: () => const AuthScreen(isTest: false),
     ),
 
     GetPage(

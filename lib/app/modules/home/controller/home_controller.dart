@@ -9,7 +9,10 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final EdenProvider provider;
   final StorageService storage;
-  HomeController( {required this.provider, required this.storage,});
+  HomeController({
+    required this.provider,
+    required this.storage,
+  });
 
   StreamSubscription<ably.Message>? subscription;
   ably.RealtimeChannel? channel;
@@ -36,7 +39,8 @@ class HomeController extends GetxController {
   ];
 
   Future<void> connectToAbly() async {
-    String key = await provider.ablyKey();
+    dynamic response = await provider.getSecrets();
+    String key = response["ablyKey"];
 
     final clientOptions = ably.ClientOptions(key: key);
 

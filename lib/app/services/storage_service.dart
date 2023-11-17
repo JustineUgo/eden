@@ -13,7 +13,7 @@ class StorageService extends GetxService {
 
   StorageService({required this.storage});
 
-  Rx<Map<String, dynamic>> user = Rx<Map<String, dynamic>>({});
+  Rx<Map<String, dynamic>> user = Rx<Map<String, dynamic>>({"name": "Justine", "email": "mail@gmnail.com", "photo": "photo"});
 
   Future setProfile(String name, String email, String photo) async {
     Map<String, dynamic> value = {"name": name, "email": email, "photo": photo};
@@ -23,4 +23,9 @@ class StorageService extends GetxService {
   }
 
   String get getProfile => storage.read(user_profile_key) ?? '';
+
+  Future setIsFirstLaunchStatus() async {
+    await storage.write(onbaord_key, false);
+  }
+  bool get firstLaunch => storage.read(onbaord_key) ?? true;
 }

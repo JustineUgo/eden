@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:eden/app/di/binding.dart';
+import 'package:eden/app/services/storage_service.dart';
 import 'package:eden/app/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'firebase_options.dart';
 import 'app/routes/routes.dart';
 
@@ -17,6 +19,8 @@ Future<void> main() async {
   } else {
     await Firebase.initializeApp();
   }
+  //storage init
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -26,9 +30,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.put(StorageService(storage: GetStorage()));
+    bool isFirstLaunch = Get.find<StorageService>().firstLaunch;
     return GetMaterialApp(
-      // initialRoute: isFirstLaunch ? Paths.splash : null,
-      initialRoute: Paths.onboard,
+      initialRoute: isFirstLaunch ? Paths.onboard : null,
       debugShowCheckedModeBanner: false,
       getPages: AppRoutes.routes,
       theme: AppTheme.light(),

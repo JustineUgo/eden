@@ -5,8 +5,8 @@ class EdenProvider {
 
   EdenProvider({required this.client});
 
-  Future<String> ablyKey() async {
-    final response = await client.get("https://mocki.io/v1/67802b5a-b50b-459a-b812-18c487d6b5ff");
-    return response.body['key'];
+  Future<dynamic> getSecrets() async {
+    final response = await client.get("https://mocki.io/v1/2714f856-cb13-49f4-aa4f-3d40b986c626");
+    return response.body;
   }
 }

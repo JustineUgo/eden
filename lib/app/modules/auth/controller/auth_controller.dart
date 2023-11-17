@@ -1,4 +1,5 @@
 import 'package:eden/app/data/provider/provider.dart';
+import 'package:eden/app/modules/home/controller/home_controller.dart';
 import 'package:eden/app/routes/routes.dart';
 import 'package:eden/app/services/storage_service.dart';
 import 'package:eden/app/theme/theme.dart';
@@ -13,9 +14,26 @@ class AuthController extends GetxController {
   final EdenProvider provider;
 
   AuthController({required this.storage, required this.provider});
+  RxBool isLoading = RxBool(false);
+
+  Future loadAuth({required bool isTest}) async {
+    isLoading(true);
+    await Future.delayed(const Duration(seconds: 2));
+    if (!isTest) {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        storage.setProfile(user.displayName ?? '', user.email ?? '', user.photoURL ?? '');
+        Get.find<HomeController>().connectToAbly();
+        Get.offAllNamed(Paths.home);
+      }
+    }
+
+    isLoading(false);
+  }
 
   Future<dynamic> signInWithGoogle() async {
     try {
+      await signOut();
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
       final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
@@ -26,36 +44,28 @@ class AuthController extends GetxController {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-
-      User? user = FirebaseAuth.instance.currentUser;
-      storage.setProfile(user?.displayName ?? '', user?.email ?? '', user?.photoURL ?? '');
-      Get.offAllNamed(Paths.home);
+      loadAuth(isTest: false);
     } on Exception catch (e) {
-      // TODO
-      print('exception->$e');
-    }
-  }
-
-  Future<bool> signOutFromGoogle() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      return true;
-    } on Exception catch (_) {
-      return false;
+      e;
     }
   }
 
   Future<dynamic> signInWithGithub(BuildContext context) async {
     try {
-      // create required params
+      await signOut();
+
+      dynamic secrets = await provider.getSecrets();
+      String githubKey = secrets["githubKey"];
+      String clientId = secrets["githubClient"];
+
       var params = GithubSignInParams(
-        clientId: 'f0911f27da590fd9aab2',
-        clientSecret: '1dee5378dc7f261bcfe61fdcb4e28537786d98e4',
+        clientId: clientId,
+        clientSecret: githubKey,
         redirectUrl: 'https://eden-d5ed4.firebaseapp.com/__/auth/handler',
         scopes: 'read:user,user:email',
       );
 
-      // Push [GithubSigninScreen] to perform login then get the [GithubSignInResponse]
+      // ignore: use_build_context_synchronously
       GithubSignInResponse response = await Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
         return GithubSigninScreen(
           params: params,
@@ -63,19 +73,22 @@ class AuthController extends GetxController {
           title: 'Github login',
         );
       }));
-
       final AuthCredential credential = GithubAuthProvider.credential(response.accessToken ?? '');
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-
-      User? user = FirebaseAuth.instance.currentUser;
-      storage.setProfile(user?.displayName ?? '', user?.email ?? '', user?.photoURL ?? '');
-      Get.offAllNamed(Paths.home);
-      // storage.setProfile(user?.displayName ?? '', user?.email ?? '', user?.photoURL ?? '');
-      // Get.offAllNamed(Paths.home);
+      loadAuth(isTest: false);
     } on Exception catch (e) {
-      // TODO
-      print('exception->$e');
+      e;
+    }
+  }
+
+  Future<bool> signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAllNamed(Paths.auth);
+      return true;
+    } on Exception catch (_) {
+      return false;
     }
   }
 }

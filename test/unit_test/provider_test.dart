@@ -14,20 +14,30 @@ void main() {
     provider = EdenProvider(client: client);
   });
 
-  test('Provider should return Ably key ', () async {
+  test('Provider should return secrets', () async {
     //Arrange
-    String key = "my_api_key";
-    dynamic data = {"key": key};
+    String ablyKey = "ably_key";
+    String githubSecret = "github_secret";
+    String githubClient = "github_client";
+
+    dynamic data = {
+      "ablyKey": ablyKey,
+      "githubKey": githubSecret,
+      "githubClient": githubClient,
+    };
     when(
-      () => client.get("https://mocki.io/v1/67802b5a-b50b-459a-b812-18c487d6b5ff"),
+      () => client.get("https://mocki.io/v1/2714f856-cb13-49f4-aa4f-3d40b986c626"),
     ).thenAnswer((_) async => Response(body: data));
 
     //Act
-    final result = await provider.ablyKey();
+    final result = await provider.getSecrets();
 
     //Assert
-    verify(() => client.get("https://mocki.io/v1/67802b5a-b50b-459a-b812-18c487d6b5ff"));
+    verify(() => client.get("https://mocki.io/v1/2714f856-cb13-49f4-aa4f-3d40b986c626"));
     verifyNoMoreInteractions(client);
-    expect(result, key);
+    expect(result, data);
+    expect(result["ablyKey"], ablyKey);
+    expect(result["githubKey"], githubSecret);
+    expect(result["githubClient"], githubClient);
   });
 }

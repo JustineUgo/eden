@@ -1,6 +1,6 @@
-import 'package:eden/app/modules/home/controller/home_controller.dart';
 import 'package:eden/app/modules/onboard/controller/onboard_controller.dart';
 import 'package:eden/app/routes/routes.dart';
+import 'package:eden/app/services/storage_service.dart';
 import 'package:eden/app/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,6 @@ class OnboardScreen extends GetView<OnboardController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<HomeController>().connectToAbly();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -85,7 +84,10 @@ class OnboardBottom extends StatelessWidget {
                     )),
           ),
           GestureDetector(
-            onTap: () => Get.offAndToNamed(Paths.auth),
+            onTap: () {
+              Get.find<StorageService>().setIsFirstLaunchStatus();
+              Get.offAndToNamed(Paths.auth);
+            },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: Dimensions.unit * 3, horizontal: Dimensions.unit * 6),
               decoration: BoxDecoration(
