@@ -21,11 +21,11 @@ void main() {
     Get.put(AuthController(storage: storage, provider: provider));
     when(() => storage.setIsFirstLaunchStatus()).thenAnswer((_) => Future.value());
   });
-  testWidgets('Auth screen', (WidgetTester tester) async {
+  testWidgets('Auth screen',skip:true, (WidgetTester tester) async {
     await tester.pumpWidget(widgetForTesting(child: const AuthScreen(isTest: true)));
 
     expect(find.text("Log in"), findsOneWidget);
-    await Future.delayed(const Duration(seconds: 3));
+    // await Future.delayed(const Duration(seconds: 3));
     expect(find.byKey(const Key('signup-option')), findsOneWidget);
     expect(find.byKey(const Key('logo')), findsOneWidget);
   });

@@ -54,7 +54,7 @@ class AuthScreen extends GetView<AuthController> {
                     ),
                     const SizedBox(height: 30),
                     Obx(() {
-                        return controller.isLoading.value? const Center(child: CircularProgressIndicator(color: AppTheme.green)): Row( key: const Key('signup-option'), 
+                        return controller.isLoading.value? const Center(child: CircularProgressIndicator(color: AppTheme.green)): Row( 
                           children: [
                             LoginOption(
                                 iconData: FontAwesomeIcons.google,
@@ -63,7 +63,7 @@ class AuthScreen extends GetView<AuthController> {
                             LoginOption(iconData: FontAwesomeIcons.github, authType: AuthType.github),
                           ],
                         );
-                      }
+                      },key: const Key('signup-option'), 
                     ),
                     const SizedBox(height: 50),
                     Text(
