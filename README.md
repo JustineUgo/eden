@@ -17,6 +17,7 @@ Simple challenge submission
     <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/7.png" width="140" height="280">
     <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/8.png" width="140" height="280">
     <img src="https://raw.githubusercontent.com/JustineUgo/eden/main/assets/9.png" width="140" height="280">
+    [Video Demonstration](https://www.loom.com/share/5439c19b250c4c6f9bfba5b2412c31cd?sid=1b233977-b286-4e19-83ed-a6e9081ff822)
 
 ## Standards
 
@@ -126,11 +127,18 @@ Getx has two state managers. One is a Simple state manager used with the ``GetBu
 
 CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD.  GitHub Actions offers workflows that can build the code in your repository and run your tests.
 
+[Workflows](https://github.com/JustineUgo/eden/actions/workflows/ci.yml)
+
 ### Testing
 
 Test automation is the practice of automatically reviewing and validating a software product, such as a web application, to make sure it meets predefined quality standards for code style, functionality (business logic), and user experience.
 
 Mocktail, allow emulating a live web service or database and return specific results depending on the situation. 
+
+##### Tests written
+
+ - Unit test
+ - Widget test
 
 
 ## How to Use 
