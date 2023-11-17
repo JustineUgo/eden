@@ -115,7 +115,7 @@ class AuthController extends GetxController {
           borderRadius: 8,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          duration: const Duration(seconds: 3),
+          duration: const Duration(seconds: 4),
           snackPosition: SnackPosition.TOP),
     );
   }

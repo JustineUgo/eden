@@ -12,8 +12,8 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: AppTheme.green, onPressed:()=> Get.find<AuthController>().signOut(), child: const Icon(Icons.logout_rounded)),
+      floatingActionButton:
+          FloatingActionButton(backgroundColor: AppTheme.green, onPressed: () => Get.find<AuthController>().signOut(), child: const Icon(Icons.logout_rounded)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
