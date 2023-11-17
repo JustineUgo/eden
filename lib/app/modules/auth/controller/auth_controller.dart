@@ -53,7 +53,7 @@ class AuthController extends GetxController {
 
   Future<dynamic> signInWithGithub(BuildContext context) async {
     try {
-      await signOut();
+      await FirebaseAuth.instance.signOut();
 
       dynamic secrets = await provider.getSecrets();
       String githubKey = secrets["githubKey"];
@@ -86,7 +86,7 @@ class AuthController extends GetxController {
   Future<bool> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
-      Get.offAll(()=> const AuthScreen(isTest: true));
+      Get.offAll(() => const AuthScreen(isTest: true));
       return true;
     } on Exception catch (_) {
       return false;
