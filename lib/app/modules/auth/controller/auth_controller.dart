@@ -48,8 +48,9 @@ class AuthController extends GetxController {
       await FirebaseAuth.instance.signInWithCredential(credential);
       loadAuth(isTest: false);
     } on FirebaseAuthException catch (e) {
-      if (e.code == "account-exists-with-different-credential") ;
-      showMessage(e.message ?? '');
+      if (e.code == "account-exists-with-different-credential") {
+        showMessage(e.message ?? '');
+      }
     } on Exception catch (e) {
       e;
       // showMessage(e.me)
@@ -84,8 +85,9 @@ class AuthController extends GetxController {
       await FirebaseAuth.instance.signInWithCredential(credential);
       loadAuth(isTest: false);
     } on FirebaseAuthException catch (e) {
-      if (e.code == "account-exists-with-different-credential") ;
-      showMessage(e.message ?? '');
+      if (e.code == "account-exists-with-different-credential") {
+        showMessage(e.message ?? '');
+      }
     } on Exception catch (e) {
       e;
     }
