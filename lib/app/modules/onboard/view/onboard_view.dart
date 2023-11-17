@@ -1,3 +1,4 @@
+import 'package:eden/app/modules/home/controller/home_controller.dart';
 import 'package:eden/app/modules/onboard/controller/onboard_controller.dart';
 import 'package:eden/app/routes/routes.dart';
 import 'package:eden/app/theme/theme.dart';
@@ -11,11 +12,13 @@ class OnboardScreen extends GetView<OnboardController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<HomeController>().connectToAbly();
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(key: const Key('onboard-screen'), 
+            Expanded(
+              key: const Key('onboard-screen'),
               child: GestureDetector(
                 onHorizontalDragUpdate: (details) {
                   // Swiping in right direction.
@@ -82,7 +85,7 @@ class OnboardBottom extends StatelessWidget {
                     )),
           ),
           GestureDetector(
-            onTap: ()=> Get.offAndToNamed(Paths.auth),
+            onTap: () => Get.offAndToNamed(Paths.auth),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: Dimensions.unit * 3, horizontal: Dimensions.unit * 6),
               decoration: BoxDecoration(

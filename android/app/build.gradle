@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "app.edenlife.eden"
+    namespace "com.edenlife.eden"
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 

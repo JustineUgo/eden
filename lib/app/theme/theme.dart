@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 
 class AppTheme {
@@ -9,7 +10,7 @@ class AppTheme {
   static const Color darkMode = Color(0xff121212);
   static const Color white = Color(0xffffffff);
 
-  static ThemeData get themeData => Get.isDarkMode ? AppTheme.dark() : AppTheme.light();
+  static ThemeData get themeData => SchedulerBinding.instance.platformDispatcher.platformBrightness  == Brightness.dark? AppTheme.dark() : AppTheme.light();
 
   static ThemeData light() {
     return ThemeData(
