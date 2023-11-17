@@ -90,7 +90,7 @@ It accomodates separation of concerns as well as makes testing a breeze, not wit
 The project uses GetX to, injection dependencies. It creates an instance like this:
 
 ```
-Get.put(Controller)
+Get.put(Controller())
 ```
 And injects it into another class, like this:
 
@@ -115,6 +115,8 @@ Getx routes like this:
   
 ```
 Get.to(()=>Home())
+
+Get.toNamed(home)
 ```
  
 ### State management
