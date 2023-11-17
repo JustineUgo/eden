@@ -1,4 +1,5 @@
 import 'package:eden/app/data/provider/provider.dart';
+import 'package:eden/app/modules/auth/view/auth_view.dart';
 import 'package:eden/app/modules/home/controller/home_controller.dart';
 import 'package:eden/app/routes/routes.dart';
 import 'package:eden/app/services/storage_service.dart';
@@ -85,7 +86,7 @@ class AuthController extends GetxController {
   Future<bool> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
-      Get.offAllNamed(Paths.auth);
+      Get.offAll(()=> const AuthScreen(isTest: true));
       return true;
     } on Exception catch (_) {
       return false;
